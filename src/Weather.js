@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { ColorRing } from "react-loader-spinner";
+import { ProgressBar } from "react-loader-spinner";
 
 export default function Weather(props) {
   function handleResponse(response) {
@@ -14,14 +14,14 @@ export default function Weather(props) {
   axios.get(apiUrl).then(handleResponse);
 
   return (
-    <ColorRing
-      visible={true}
+    <ProgressBar
       height="80"
       width="80"
-      ariaLabel="blocks-loading"
+      ariaLabel="progress-bar-loading"
       wrapperStyle={{}}
-      wrapperClass="blocks-wrapper"
-      colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+      wrapperClass="progress-bar-wrapper"
+      borderColor="#F4442E"
+      barColor="#51E5FF"
     />
   );
 }
