@@ -1,27 +1,73 @@
 import React from "react";
-import axios from "axios";
-import { ProgressBar } from "react-loader-spinner";
+
+import "./Weather.css";
 
 export default function Weather(props) {
-  function handleResponse(response) {
-    alert(
-      `The weather in ${props.city} is ${Math.round(response.data.main.temp)}`
-    );
-  }
-
-  let apiKey = "be60748992fab0f5da8162563fb21245";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(handleResponse);
-
+  let weather = {
+    city: "Chicago",
+    texperature: 24,
+    date: "Monday 11:09",
+    description: "Windy",
+    imgUrl:
+      "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png",
+    humidity: 55,
+    wind: 2,
+  };
   return (
-    <ProgressBar
-      height="80"
-      width="80"
-      ariaLabel="progress-bar-loading"
-      wrapperStyle={{}}
-      wrapperClass="progress-bar-wrapper"
-      borderColor="#F4442E"
-      barColor="#51E5FF"
-    />
+    <div className="Weather">
+      <div className="container">
+        <div className="weather-app-wrapper">
+          <div className="weather-app">
+            <form className="search-form mb-3">
+              <div className="row">
+                <div className="col-6">
+                  <input
+                    type="search"
+                    placeholder="Type a city.."
+                    className="form-control shadow-sm"
+                  />
+                </div>
+                <div className="col-3">
+                  <input
+                    type="submit"
+                    value="Search"
+                    className="form-control btn btn-primary shadow-sm"
+                  />
+                </div>
+              </div>
+            </form>
+            <div className="overview">
+              <h1>{weather.city}</h1>
+              <ul>
+                <li>{weather.date}</li>
+                <li>{weather.description}</li>
+              </ul>
+            </div>
+            <div className="row">
+              <div className="col-6">
+                <div className="d-flex weather-temperature">
+                  <img src={weather.imgUrl} alt="Clear" />
+                  <div>
+                    <strong>{weather.texperature}</strong>
+                    <span className="units"> ℉</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-6">
+                <ul>
+                  <li>
+                    Humidity: <span>{weather.humidity}</span>%
+                  </li>
+                  <li>
+                    Wind: <span>{weather.wind}</span>mph
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
