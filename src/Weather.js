@@ -66,6 +66,17 @@ export default function Weather(props) {
               </div>
             </div>
           </div>
+
+          <small>
+            <a
+              href="https://github.com/Ketchadaprons/weather-react-1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open-source code
+            </a>
+            , by Ketchadapron
+          </small>
         </div>
       </div>
     </div>
